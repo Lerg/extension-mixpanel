@@ -12,6 +12,11 @@ int EXTENSION_TRACK_EVENT(lua_State *L) {
 	return 0;
 }
 
+int EXTENSION_ADD_PUSH_TOKEN(lua_State *L) {
+	dmLogInfo("add_push_token");
+	return 0;
+}
+
 void EXTENSION_INITIALIZE(lua_State *L) {
 }
 
