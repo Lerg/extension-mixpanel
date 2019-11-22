@@ -55,6 +55,7 @@ int EXTENSION_ADD_PUSH_TOKEN(lua_State *L) {return [extension_instance add_push_
 	NSString *token = [params get_string_not_null:@"token"];
 
 	[Mixpanel sharedInstanceWithToken:token];
+	[mixpanel identify:mixpanel.distinctId];
 
 	is_initialized = true;
 
