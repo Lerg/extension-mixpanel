@@ -95,9 +95,11 @@ int EXTENSION_ADD_PUSH_TOKEN(lua_State *L) {return [extension_instance add_push_
 	}
 
 	if (lua_isstring(L, 1)) {
-		NSString *token = @(lua_tostring(L, 1));
+		size_t token_length;
+		const char *token = luaL_checklstring(L, 1, &token_length);
+		NSData *token_data = [NSData dataWithBytes:(const void *)token length:token_length];
 		Mixpanel *mixpanel = [Mixpanel sharedInstance];
-		[mixpanel.people addPushDeviceToken:[token dataUsingEncoding:NSUTF8StringEncoding]];
+		[mixpanel.people addPushDeviceToken:token_data];
 	}
 	return 0;
 }
